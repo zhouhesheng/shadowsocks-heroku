@@ -135,7 +135,7 @@ var server = net.createServer(function(connection) {
         const addrtype = data[3];
         if (cmd !== 1) {
           console.log('unsupported cmd:', cmd);
-          const reply = Buffer.alloc('\u0005\u0007\u0000\u0001', 'binary');
+          const reply = Buffer.from('\u0005\u0007\u0000\u0001', 'binary');
           connection.end(reply);
           return;
         }
@@ -196,7 +196,7 @@ var server = net.createServer(function(connection) {
 
         ws.on('open', function() {
           console.log(`connecting ${remoteAddr} via ${aServer}`);
-          let addrToSendBuf = Buffer.alloc(addrToSend, 'binary');
+          let addrToSendBuf = Buffer.from(addrToSend, 'binary');
           addrToSendBuf = encryptor.encrypt(addrToSendBuf);
           ws.send(addrToSendBuf, { binary: true });
           let i = 0;

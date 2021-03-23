@@ -158,7 +158,7 @@ wss.on('connection', function(ws) {
     }
   });
 
-  ws.on('ping', () => ws.pong('ok', null, true));
+  ws.on('ping', () => ws.pong('', null, null));
 
   ws.on('close', function() {
     console.log('server disconnected');
